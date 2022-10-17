@@ -1,7 +1,7 @@
 Feature: User wants to search any keyword at Google
 
   @GoogleTask
-  Scenario Outline: User can successfully search a single job
+  Scenario Outline: User can successfully search a single keyword
     Given user opens <browser>
     And user clear <browser> cookies
     When user goes to Google
@@ -23,4 +23,4 @@ Feature: User wants to search any keyword at Google
 
     Examples:
       | browser | keyword |
-      | firefox | apple   |
+      | firefox | ruby   |

@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
 
         features ={"@target/rerun.txt"},
-        glue ={"com/bing/step_definitions"}
+        glue ={"com/two_Bing/step_definitions"}
 )
 
 

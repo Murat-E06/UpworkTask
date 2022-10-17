@@ -5,13 +5,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class BasePage {
+public class BingPage {
 
-    public BasePage(){
-        PageFactory.initElements(Driver.getDriver(),this);
+    public BingPage(String browserType){
+        PageFactory.initElements(Driver.getDriver(browserType),this);
     }
 
-
-    @FindBy(id = "sb_form_q")
+    @FindBy(name="q")
     public WebElement bingSearchBox;
 }

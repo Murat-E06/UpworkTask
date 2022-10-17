@@ -16,7 +16,9 @@ public class GoogleSearch_StepDefinitions {
     @Given("user opens {string}")
     public void user_opens(String string) {
         browserType=string;
+
         Driver.getDriver(browserType);
+
         basePage=new BasePage(browserType);
 
     }
