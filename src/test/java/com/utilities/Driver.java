@@ -45,6 +45,34 @@ public class Driver {
         }
         return driverPool.get();
     }
+
+    public static WebDriver getDriver(String browser){
+
+        if(driverPool.get() == null){
+            String browserType = browser;
+
+            switch (browserType.toLowerCase()){
+                case "chrome":
+                    WebDriverManager.chromedriver().setup();
+                    driverPool.set(new ChromeDriver());
+                    break;
+                case "firefox":
+                    WebDriverManager.firefoxdriver().setup();
+                    driverPool.set(new FirefoxDriver());
+                    break;
+                case "edge":
+                    WebDriverManager.edgedriver().setup();
+                    driverPool.set(new EdgeDriver());
+                    break;
+                default:
+                    throw new RuntimeException("Incorrect browser type, please check configuration.properties file\nSupported browser types: chrome, firefox, edge");
+            }
+            defaultWindowSize = driverPool.get().manage().window().getSize();
+            maximizeWindow();
+            Driver.timeout(10,"s");
+        }
+        return driverPool.get();
+    }
     public static void closeDriver(){
         if (driverPool.get() != null){
             driverPool.get().quit(); // this line will terminate the existing session. value will not even be null

@@ -572,4 +572,41 @@ for given duration
         }
     }
 
+    /**
+     * Checks the attribute name list of a given Web Element that contains the given String value
+     *
+     * @param element
+     * @param attributeNameList
+     * @param keyword
+     *
+     * @return boolean
+     *         -True if at least one of the value of attributes contains keyword
+     *         -False if none of the value of attributes does not contain keyword
+     */
+    public boolean checkAttributeValueContainsKeyword(WebElement element,ArrayList<String> attributeNameList, String keyword){
+        for (String attributeName : attributeNameList) {
+            String value= element.getAttribute(attributeName);
+            if (value.contains(keyword)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Checks the attribute of a Web Element contains the given String value
+     *
+     * @param element
+     * @param attributeName
+     * @param keyword
+     *
+     * @return boolean
+     *         -True if value of attribute contains keyword
+     *         -False if value of attribute does not contain keyword
+     */
+    public boolean checkAttributeValueContainsKeyword(WebElement element,String attributeName, String keyword){
+        String value= element.getAttribute(attributeName);
+        return value.contains(keyword);
+    }
+
 }
