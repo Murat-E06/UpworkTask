@@ -54,7 +54,6 @@ public class GoogleSearch_StepDefinitions {
     }
 
 
-
     @Then("user checks that at least one attribute of each item from parsed search results contains {string} at Google")
     public void userChecksThatAtLeastOneAttributeOfEachItemFromParsedSearchResultsContainsAtGoogle(String keyword) {
         BrowserUtils.waitFor(5);

@@ -16,6 +16,9 @@ public class BingPage {
     @FindBy(name = "q")
     public WebElement bingSearchBox;
 
-    @FindBy(xpath = "//div[@class='b_caption']")
+    @FindBy(xpath = "//div[@class='b_title']//h2")
     public List<WebElement> bingSearchList;
+
+    @FindBy(xpath = "//div[@class='b_title']//h2//a")
+    public List<WebElement> bingSearchLinkList;
 }
