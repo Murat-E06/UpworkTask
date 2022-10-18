@@ -13,6 +13,21 @@ import java.util.List;
 import java.util.Set;
 
 public class BrowserUtils {
+/*
+ * This method will accept list of web elements
+ * and return text of web elements in a List of String.
+ * @param List<WebElement>
+ * @return ArrayList<String> listOfTexts
+ */
+
+    public static ArrayList<String> getTextOfElementsIntoArrayList(List<WebElement> elements) {
+        ArrayList<String>listOfTexts=new ArrayList<>();
+
+        for (WebElement each : elements) {
+            listOfTexts.add(each.getText());
+        }
+        return listOfTexts;
+    }
 
     /*
 This method will accept int (in seconds) and execute Thread.sleep
@@ -583,7 +598,7 @@ for given duration
      *         -True if at least one of the value of attributes contains keyword
      *         -False if none of the value of attributes does not contain keyword
      */
-    public boolean checkAttributeValueContainsKeyword(WebElement element,ArrayList<String> attributeNameList, String keyword){
+    public static boolean checkAttributeValueContainsKeyword(WebElement element,ArrayList<String> attributeNameList, String keyword){
         for (String attributeName : attributeNameList) {
             String value= element.getAttribute(attributeName);
             if (value.contains(keyword)){
@@ -604,7 +619,7 @@ for given duration
      *         -True if value of attribute contains keyword
      *         -False if value of attribute does not contain keyword
      */
-    public boolean checkAttributeValueContainsKeyword(WebElement element,String attributeName, String keyword){
+    public static boolean checkAttributeValueContainsKeyword(WebElement element,String attributeName, String keyword){
         String value= element.getAttribute(attributeName);
         return value.contains(keyword);
     }
