@@ -59,8 +59,8 @@ public class GoogleSearch_StepDefinitions {
     public void userChecksThatAtLeastOneAttributeOfEachItemFromParsedSearchResultsContainsAtGoogle(String keyword) {
         BrowserUtils.waitFor(5);
         for (WebElement webElement : basePage.googleSearchLinkList) {
-            System.out.println(webElement.getAttribute("href"));
-            if(BrowserUtils.checkAttributeValueContainsKeyword(webElement,"href",keyword)){
+            System.out.println(webElement.getAttribute(BasePage.attributeName));
+            if(BrowserUtils.checkAttributeValueContainsKeyword(webElement,BasePage.attributeName,keyword)){
                 System.out.println("true");
             }else{
                 System.out.println("false");
@@ -75,10 +75,10 @@ public class GoogleSearch_StepDefinitions {
         BrowserUtils.waitFor(5);
         for (WebElement webElement : basePage.googleSearchLinkList) {
 
-            if(BrowserUtils.checkAttributeValueContainsKeyword(webElement,"href",keyword)){
-                googleSearchResultLog.put(webElement.getAttribute("href"),true);
+            if(BrowserUtils.checkAttributeValueContainsKeyword(webElement,BasePage.attributeName,keyword)){
+                googleSearchResultLog.put(webElement.getAttribute(BasePage.attributeName),true);
             }else{
-                googleSearchResultLog.put(webElement.getAttribute("href"),false);
+                googleSearchResultLog.put(webElement.getAttribute(BasePage.attributeName),false);
             }
         }
         System.out.println(googleSearchResultLog);

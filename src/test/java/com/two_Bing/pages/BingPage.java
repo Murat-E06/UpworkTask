@@ -13,6 +13,13 @@ public class BingPage {
         PageFactory.initElements(Driver.getDriver(browserType), this);
     }
 
+    public static String attributeName;
+
+    static {
+        attributeName="href";
+        //attributeNameList.addAll(Arrays.asList("href","data-ved","ping"));
+    }
+
     @FindBy(name = "q")
     public WebElement bingSearchBox;
 

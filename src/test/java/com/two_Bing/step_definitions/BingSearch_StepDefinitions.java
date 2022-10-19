@@ -63,8 +63,8 @@ public class BingSearch_StepDefinitions {
         BrowserUtils.waitFor(5);
 
         for (WebElement webElement : bingPage.bingSearchLinkList) {
-            System.out.println(webElement.getAttribute("href"));
-            if (BrowserUtils.checkAttributeValueContainsKeyword(webElement, "href", keyword)) {
+            System.out.println(webElement.getAttribute(BingPage.attributeName));
+            if (BrowserUtils.checkAttributeValueContainsKeyword(webElement, BingPage.attributeName, keyword)) {
                 System.out.println("true");
             } else {
                 System.out.println("false");
@@ -78,10 +78,10 @@ public class BingSearch_StepDefinitions {
         BrowserUtils.waitFor(5);
 
         for (WebElement webElement : bingPage.bingSearchLinkList) {
-            if (BrowserUtils.checkAttributeValueContainsKeyword(webElement, "href", keyword)) {
-                bingSearchResultLog.put(webElement.getAttribute("href"), true);
+            if (BrowserUtils.checkAttributeValueContainsKeyword(webElement, BingPage.attributeName, keyword)) {
+                bingSearchResultLog.put(webElement.getAttribute(BingPage.attributeName), true);
             } else {
-                bingSearchResultLog.put(webElement.getAttribute("href"), false);
+                bingSearchResultLog.put(webElement.getAttribute(BingPage.attributeName), false);
             }
         }
         System.out.println(bingSearchResultLog);

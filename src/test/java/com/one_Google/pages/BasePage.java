@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class BasePage {
@@ -12,6 +14,16 @@ public class BasePage {
     public BasePage(String browserType) {
         PageFactory.initElements(Driver.getDriver(browserType), this);
     }
+
+    public static ArrayList<String>attributeNameList;
+
+    public static String attributeName;
+
+    static {
+        attributeName="href";
+        //attributeNameList.addAll(Arrays.asList("href","data-ved","ping"));
+    }
+
 
 
     @FindBy(name = "q")
