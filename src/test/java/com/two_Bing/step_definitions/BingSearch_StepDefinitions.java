@@ -23,7 +23,6 @@ public class BingSearch_StepDefinitions {
     public void user_opens(String string) {
 
         browserType = string;
-        bingPage = new BingPage(browserType);
 
         Driver.getDriver(browserType);
 
@@ -37,6 +36,7 @@ public class BingSearch_StepDefinitions {
 
     @When("user goes to Bing")
     public void user_goes_to_bing() {
+        bingPage = new BingPage(browserType);
         Driver.getDriver(browserType).get(ConfigurationReader.getProperty("url2"));
 
     }

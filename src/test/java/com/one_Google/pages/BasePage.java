@@ -24,6 +24,8 @@ public class BasePage {
         //attributeNameList.addAll(Arrays.asList("href","data-ved","ping"));
     }
 
+    public static ArrayList<String>googleResult=new ArrayList<>();
+
 
 
     @FindBy(name = "q")

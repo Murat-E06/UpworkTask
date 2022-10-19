@@ -52,7 +52,7 @@ Feature: User wants to search any keyword at Google
       | browser | keyword |
       | chrome | ruby   |
 
-  @wip
+  @google
   Scenario Outline: User can successfully search a single job
     Given user opens "<browser>"
     And user clear "<browser>" cookies

@@ -1,8 +1,5 @@
-package com.one_Google.runners;
+package com.merge.runners;
 
-import com.one_Google.pages.BasePage;
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.When;
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 import org.junit.runner.RunWith;
@@ -16,12 +13,10 @@ import org.junit.runner.RunWith;
                 "me.jvt.cucumber.report.PrettyReports:target/cucumber",
         },
         features ={"src/test/resources/features"},
-        glue ={"com/one_Google/step_definitions"},
+        glue ={"com/merge/step_definitions"},
         dryRun = false,
-        tags = "@google"
+        tags = ""
 )
 
-public class CukesRunner {
-
+public class RegressionRunner {
 }
-

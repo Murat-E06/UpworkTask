@@ -24,7 +24,7 @@ public class GoogleSearch_StepDefinitions {
     public void user_opens(String string) {
         browserType=string;
         Driver.getDriver(browserType);
-        basePage=new BasePage(browserType);
+
 
     }
     @Given("user clear {string} cookies")
@@ -34,6 +34,7 @@ public class GoogleSearch_StepDefinitions {
     }
     @When("user goes to Google")
     public void user_goes_to_google() {
+        basePage=new BasePage(browserType);
         Driver.getDriver(browserType).get(ConfigurationReader.getProperty("url1"));
 
     }

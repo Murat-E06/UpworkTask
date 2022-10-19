@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BingPage {
@@ -19,6 +20,8 @@ public class BingPage {
         attributeName="href";
         //attributeNameList.addAll(Arrays.asList("href","data-ved","ping"));
     }
+
+    public ArrayList<String> bingResult = new ArrayList<>();
 
     @FindBy(name = "q")
     public WebElement bingSearchBox;

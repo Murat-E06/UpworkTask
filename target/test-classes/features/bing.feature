@@ -26,4 +26,4 @@ Feature: User wants to search any keyword at Bing
 
     Examples:
       | browser | keyword |
-      | firefox  | ruby    |
+      | chrome  | ruby    |
