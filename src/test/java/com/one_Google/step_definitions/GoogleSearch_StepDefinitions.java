@@ -29,6 +29,7 @@ public class GoogleSearch_StepDefinitions {
     }
     @Given("user clear {string} cookies")
     public void user_clear_cookies(String string) {
+        Driver.getDriver().manage().deleteAllCookies();
 
     }
     @When("user goes to Google")
@@ -65,7 +66,6 @@ public class GoogleSearch_StepDefinitions {
                 System.out.println("false");
             }
         }
-
     }
 
     @Then("user logs in search results whose attributes contain {string} and whose do not at Google.")

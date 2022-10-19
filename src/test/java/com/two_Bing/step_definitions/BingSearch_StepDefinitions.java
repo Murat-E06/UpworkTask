@@ -31,6 +31,7 @@ public class BingSearch_StepDefinitions {
 
     @Given("user clear {string} cookies")
     public void user_clear_cookies(String string) {
+        Driver.getDriver().manage().deleteAllCookies();
 
     }
 
@@ -69,7 +70,6 @@ public class BingSearch_StepDefinitions {
                 System.out.println("false");
             }
         }
-
     }
 
     @Then("user logs in search results whose attributes contain {string} and whose do not at Bing")

@@ -621,7 +621,7 @@ for given duration
      */
     public static boolean checkAttributeValueContainsKeyword(WebElement element,String attributeName, String keyword){
         String value= element.getAttribute(attributeName);
-        return value.contains(keyword);
+        return value.toLowerCase().contains(keyword);
     }
 
 }
