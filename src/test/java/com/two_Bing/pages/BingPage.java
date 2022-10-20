@@ -1,5 +1,6 @@
 package com.two_Bing.pages;
 
+import com.merge.pages.BasePage;
 import com.utilities.Driver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -8,7 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BingPage {
+public class BingPage extends BasePage {
 
     public BingPage(String browserType) {
         PageFactory.initElements(Driver.getDriver(browserType), this);
@@ -21,7 +22,7 @@ public class BingPage {
         //attributeNameList.addAll(Arrays.asList("href","data-ved","ping"));
     }
 
-    public ArrayList<String> bingResult = new ArrayList<>();
+
 
     @FindBy(name = "q")
     public WebElement bingSearchBox;

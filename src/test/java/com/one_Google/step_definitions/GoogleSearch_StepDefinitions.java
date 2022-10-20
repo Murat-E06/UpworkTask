@@ -1,6 +1,6 @@
 package com.one_Google.step_definitions;
 
-import com.one_Google.pages.BasePage;
+import com.one_Google.pages.GooglePage;
 import com.utilities.BrowserUtils;
 import com.utilities.ConfigurationReader;
 import com.utilities.Driver;
@@ -13,11 +13,10 @@ import org.openqa.selenium.WebElement;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 public class GoogleSearch_StepDefinitions {
 
-    BasePage basePage;
+    GooglePage googlePage;
     String browserType="";
 
     @Given("user opens {string}")
@@ -34,21 +33,21 @@ public class GoogleSearch_StepDefinitions {
     }
     @When("user goes to Google")
     public void user_goes_to_google() {
-        basePage=new BasePage(browserType);
+        googlePage =new GooglePage(browserType);
         Driver.getDriver(browserType).get(ConfigurationReader.getProperty("url1"));
 
     }
     @When("user searches using the {string} at Google")
     public void user_searches_using_the_at_google(String string) {
-      BrowserUtils.waitForVisibility(basePage.googleSearchBox,5);
-        basePage.googleSearchBox.sendKeys(string+ Keys.ENTER);
+      BrowserUtils.waitForVisibility(googlePage.googleSearchBox,5);
+        googlePage.googleSearchBox.sendKeys(string+ Keys.ENTER);
 
     }
 
     @And("user parses the first {int} search result items at Google")
     public void userParsesTheFirstSearchResultItemsAtGoogle(int searchResultNumber) {
         BrowserUtils.waitFor(5);
-        ArrayList<String>result=BrowserUtils.getTextOfElementsIntoArrayList(basePage.googleSearchList);
+        ArrayList<String>result=BrowserUtils.getTextOfElementsIntoArrayList(googlePage.googleSearchList);
         //System.out.println(result.toString());
         for (String each : result) {
             System.out.println(each);
@@ -59,9 +58,9 @@ public class GoogleSearch_StepDefinitions {
     @Then("user checks that at least one attribute of each item from parsed search results contains {string} at Google")
     public void userChecksThatAtLeastOneAttributeOfEachItemFromParsedSearchResultsContainsAtGoogle(String keyword) {
         BrowserUtils.waitFor(5);
-        for (WebElement webElement : basePage.googleSearchLinkList) {
-            System.out.println(webElement.getAttribute(BasePage.attributeName));
-            if(BrowserUtils.checkAttributeValueContainsKeyword(webElement,BasePage.attributeName,keyword)){
+        for (WebElement webElement : googlePage.googleSearchLinkList) {
+            System.out.println(webElement.getAttribute(GooglePage.attributeName));
+            if(BrowserUtils.checkAttributeValueContainsKeyword(webElement, GooglePage.attributeName,keyword)){
                 System.out.println("true");
             }else{
                 System.out.println("false");
@@ -74,12 +73,12 @@ public class GoogleSearch_StepDefinitions {
         HashMap<String,Boolean>googleSearchResultLog=new HashMap<>();
 
         BrowserUtils.waitFor(5);
-        for (WebElement webElement : basePage.googleSearchLinkList) {
+        for (WebElement webElement : googlePage.googleSearchLinkList) {
 
-            if(BrowserUtils.checkAttributeValueContainsKeyword(webElement,BasePage.attributeName,keyword)){
-                googleSearchResultLog.put(webElement.getAttribute(BasePage.attributeName),true);
+            if(BrowserUtils.checkAttributeValueContainsKeyword(webElement, GooglePage.attributeName,keyword)){
+                googleSearchResultLog.put(webElement.getAttribute(GooglePage.attributeName),true);
             }else{
-                googleSearchResultLog.put(webElement.getAttribute(BasePage.attributeName),false);
+                googleSearchResultLog.put(webElement.getAttribute(GooglePage.attributeName),false);
             }
         }
         System.out.println(googleSearchResultLog);

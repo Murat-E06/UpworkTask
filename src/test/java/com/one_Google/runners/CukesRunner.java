@@ -1,8 +1,5 @@
 package com.one_Google.runners;
 
-import com.one_Google.pages.BasePage;
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.When;
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 import org.junit.runner.RunWith;

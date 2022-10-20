@@ -1,6 +1,6 @@
 package com.merge.step_definitions;
 
-import com.one_Google.pages.BasePage;
+import com.one_Google.pages.GooglePage;
 import com.two_Bing.pages.BingPage;
 import com.utilities.BrowserUtils;
 import com.utilities.ConfigurationReader;
@@ -18,7 +18,7 @@ import java.util.HashMap;
 public class Compare_StepDefinitions {
 
     BingPage bingPage;
-    BasePage basePage;
+    GooglePage googlePage;
     String browserType = "";
 
     @Given("user opens {string}")
@@ -36,23 +36,23 @@ public class Compare_StepDefinitions {
 
     @When("user goes to Google")
     public void user_goes_to_google() {
-        basePage=new BasePage(browserType);
+        googlePage =new GooglePage(browserType);
         Driver.getDriver(browserType).get(ConfigurationReader.getProperty("url1"));
 
     }
     @When("user searches using the {string} at Google")
     public void user_searches_using_the_at_google(String string) {
-        BrowserUtils.waitForVisibility(basePage.googleSearchBox,5);
-        basePage.googleSearchBox.sendKeys(string+ Keys.ENTER);
+        BrowserUtils.waitForVisibility(googlePage.googleSearchBox,5);
+        googlePage.googleSearchBox.sendKeys(string+ Keys.ENTER);
 
     }
 
     @And("user parses the first {int} search result items at Google")
     public void userParsesTheFirstSearchResultItemsAtGoogle(int searchResultNumber) {
         BrowserUtils.waitFor(5);
-        basePage.googleResult=BrowserUtils.getTextOfElementsIntoArrayList(basePage.googleSearchList);
+        googlePage.googleResult=BrowserUtils.getTextOfElementsIntoArrayList(googlePage.googleSearchList);
         //System.out.println(result.toString());
-        for (String each : basePage.googleResult) {
+        for (String each : googlePage.googleResult) {
             System.out.println(each);
         }
     }
@@ -61,9 +61,9 @@ public class Compare_StepDefinitions {
     @Then("user checks that at least one attribute of each item from parsed search results contains {string} at Google")
     public void userChecksThatAtLeastOneAttributeOfEachItemFromParsedSearchResultsContainsAtGoogle(String keyword) {
         BrowserUtils.waitFor(5);
-        for (WebElement webElement : basePage.googleSearchLinkList) {
-            System.out.println(webElement.getAttribute(BasePage.attributeName));
-            if(BrowserUtils.checkAttributeValueContainsKeyword(webElement,BasePage.attributeName,keyword.toLowerCase())){
+        for (WebElement webElement : googlePage.googleSearchLinkList) {
+            System.out.println(webElement.getAttribute(GooglePage.attributeName));
+            if(BrowserUtils.checkAttributeValueContainsKeyword(webElement, GooglePage.attributeName,keyword.toLowerCase())){
                 System.out.println("true");
             }else{
                 System.out.println("false");
@@ -76,12 +76,12 @@ public class Compare_StepDefinitions {
         HashMap<String,Boolean>googleSearchResultLog=new HashMap<>();
 
         BrowserUtils.waitFor(5);
-        for (WebElement webElement : basePage.googleSearchLinkList) {
+        for (WebElement webElement : googlePage.googleSearchLinkList) {
 
-            if(BrowserUtils.checkAttributeValueContainsKeyword(webElement,BasePage.attributeName,keyword.toLowerCase())){
-                googleSearchResultLog.put(webElement.getAttribute(BasePage.attributeName),true);
+            if(BrowserUtils.checkAttributeValueContainsKeyword(webElement, GooglePage.attributeName,keyword.toLowerCase())){
+                googleSearchResultLog.put(webElement.getAttribute(GooglePage.attributeName),true);
             }else{
-                googleSearchResultLog.put(webElement.getAttribute(BasePage.attributeName),false);
+                googleSearchResultLog.put(webElement.getAttribute(GooglePage.attributeName),false);
             }
         }
         System.out.println(googleSearchResultLog);
@@ -145,7 +145,7 @@ public class Compare_StepDefinitions {
     public void user_compares_results_and_lists_most_popular_items() {
        ArrayList<String>mostPopular=new ArrayList<>();
 
-        for (String eachGoogle : basePage.googleResult) {
+        for (String eachGoogle : googlePage.googleResult) {
 
             for (String eachBing : bingPage.bingResult) {
                 if(eachGoogle.equals(eachBing)){
