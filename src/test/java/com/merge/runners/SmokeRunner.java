@@ -12,7 +12,7 @@ import org.junit.runner.RunWith;
                 "rerun:target/rerun.txt",
                 "me.jvt.cucumber.report.PrettyReports:target/cucumber",
         },
-        features ={"src/test/resources/features"},
+        features ={"src/test/resources/smoke_features"},
         glue ={"com/merge/step_definitions"},
         dryRun = false,
         tags = ""

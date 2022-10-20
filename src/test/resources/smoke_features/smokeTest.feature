@@ -9,7 +9,7 @@ Feature: User wants to execute Smoke Test
 
     Examples:
       | browser | keyword |
-      | chrome | ruby   |
+      | firefox | ruby    |
 
   @Bing1
   Scenario Outline: User can successfully search a keyword
@@ -22,5 +22,5 @@ Feature: User wants to execute Smoke Test
     Then user logs in search results whose attributes contain "<keyword>" and whose do not at Bing
 
     Examples:
-      | browser | keyword |
-      | firefox  | ruby    |
+      | browser | keyword  |
+      | chrome  | cucumber |

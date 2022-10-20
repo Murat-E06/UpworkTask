@@ -50,9 +50,9 @@ public class Compare_StepDefinitions {
     @And("user parses the first {int} search result items at Google")
     public void userParsesTheFirstSearchResultItemsAtGoogle(int searchResultNumber) {
         BrowserUtils.waitFor(5);
-        googlePage.googleResult=BrowserUtils.getTextOfElementsIntoArrayList(googlePage.googleSearchList);
+        googlePage.setGoogleResult(BrowserUtils.getTextOfElementsIntoArrayList(googlePage.googleSearchList));
         //System.out.println(result.toString());
-        for (String each : googlePage.googleResult) {
+        for (String each : googlePage.getGoogleResult()) {
             System.out.println(each);
         }
     }
@@ -105,8 +105,8 @@ public class Compare_StepDefinitions {
     @And("user parses the first {int} search result items at Bing")
     public void userParsesTheFirstSearchResultItemsAtBing(int searchResultNumber) {
         BrowserUtils.waitFor(5);
-        bingPage.bingResult = BrowserUtils.getTextOfElementsIntoArrayList(bingPage.bingSearchList);
-        for (String each : bingPage.bingResult) {
+        bingPage.setBingResult(BrowserUtils.getTextOfElementsIntoArrayList(bingPage.bingSearchList));
+        for (String each : bingPage.getBingResult()) {
             System.out.println(each);
         }
     }
@@ -145,9 +145,9 @@ public class Compare_StepDefinitions {
     public void user_compares_results_and_lists_most_popular_items() {
        ArrayList<String>mostPopular=new ArrayList<>();
 
-        for (String eachGoogle : googlePage.googleResult) {
+        for (String eachGoogle : googlePage.getGoogleResult()) {
 
-            for (String eachBing : bingPage.bingResult) {
+            for (String eachBing : bingPage.getBingResult()) {
                 if(eachGoogle.equals(eachBing)){
                     mostPopular.add(eachGoogle);
                     break;
