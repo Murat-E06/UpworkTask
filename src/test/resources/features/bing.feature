@@ -1,6 +1,6 @@
 Feature: User wants to search any keyword at Bing
 
-  @
+  @Bing1
   Scenario Outline: User can successfully search a keyword
     Given user opens "<browser>"
     And user clear "<browser>" cookies
@@ -12,9 +12,9 @@ Feature: User wants to search any keyword at Bing
 
     Examples:
       | browser | keyword |
-      | chrome  | ruby    |
+      | firefox  | ruby    |
 
-  @Bing
+  @Bing2
   Scenario Outline: User can successfully search a keyword
     Given user opens "<browser>"
     And user clear "<browser>" cookies

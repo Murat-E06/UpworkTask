@@ -18,4 +18,4 @@ Feature: Compare google and bing search result
 
     Examples:
       | browser | keyword |
-      | chrome | ruby   |
+      | chrome | cucumber   |

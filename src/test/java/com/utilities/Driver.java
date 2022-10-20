@@ -13,10 +13,18 @@ public class Driver {
 
     private Driver(){}
 
-    //private static WebDriver driver;
-
+    /*
+    driverPool is used for multi thread
+    defaultWindowSize is used for arranging size
+     */
     private static InheritableThreadLocal<WebDriver> driverPool = new InheritableThreadLocal<>();
     private static Dimension defaultWindowSize;
+
+    /*
+    This method is used for initialization of browser according to browser type
+    given in the configurations.properties
+    @return WebDriver
+     */
 
     public static WebDriver getDriver(){
 
@@ -46,6 +54,11 @@ public class Driver {
         return driverPool.get();
     }
 
+    /*
+    This method is used for initialization of browser according to browser type
+    @param browser
+    @return WebDriver
+     */
     public static WebDriver getDriver(String browser){
 
         if(driverPool.get() == null){

@@ -63,7 +63,7 @@ public class Compare_StepDefinitions {
         BrowserUtils.waitFor(5);
         for (WebElement webElement : basePage.googleSearchLinkList) {
             System.out.println(webElement.getAttribute(BasePage.attributeName));
-            if(BrowserUtils.checkAttributeValueContainsKeyword(webElement,BasePage.attributeName,keyword)){
+            if(BrowserUtils.checkAttributeValueContainsKeyword(webElement,BasePage.attributeName,keyword.toLowerCase())){
                 System.out.println("true");
             }else{
                 System.out.println("false");
@@ -78,7 +78,7 @@ public class Compare_StepDefinitions {
         BrowserUtils.waitFor(5);
         for (WebElement webElement : basePage.googleSearchLinkList) {
 
-            if(BrowserUtils.checkAttributeValueContainsKeyword(webElement,BasePage.attributeName,keyword)){
+            if(BrowserUtils.checkAttributeValueContainsKeyword(webElement,BasePage.attributeName,keyword.toLowerCase())){
                 googleSearchResultLog.put(webElement.getAttribute(BasePage.attributeName),true);
             }else{
                 googleSearchResultLog.put(webElement.getAttribute(BasePage.attributeName),false);
@@ -117,7 +117,7 @@ public class Compare_StepDefinitions {
 
         for (WebElement webElement : bingPage.bingSearchLinkList) {
             System.out.println(webElement.getAttribute(BingPage.attributeName));
-            if (BrowserUtils.checkAttributeValueContainsKeyword(webElement, BingPage.attributeName, keyword)) {
+            if (BrowserUtils.checkAttributeValueContainsKeyword(webElement, BingPage.attributeName, keyword.toLowerCase())) {
                 System.out.println("true");
             } else {
                 System.out.println("false");
@@ -131,7 +131,7 @@ public class Compare_StepDefinitions {
         BrowserUtils.waitFor(5);
 
         for (WebElement webElement : bingPage.bingSearchLinkList) {
-            if (BrowserUtils.checkAttributeValueContainsKeyword(webElement, BingPage.attributeName, keyword)) {
+            if (BrowserUtils.checkAttributeValueContainsKeyword(webElement, BingPage.attributeName, keyword.toLowerCase())) {
                 bingSearchResultLog.put(webElement.getAttribute(BingPage.attributeName), true);
             } else {
                 bingSearchResultLog.put(webElement.getAttribute(BingPage.attributeName), false);
