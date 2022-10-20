@@ -49,18 +49,22 @@ public class Compare_StepDefinitions {
 
     @And("user parses the first {int} search result items at Google")
     public void userParsesTheFirstSearchResultItemsAtGoogle(int searchResultNumber) {
+        System.out.println("*** Search result at Google ***");
+        System.out.println("-------------------------------");
         BrowserUtils.waitFor(5);
         googlePage.setGoogleResult(BrowserUtils.getTextOfElementsIntoArrayList(googlePage.googleSearchList));
         //System.out.println(result.toString());
         for (String each : googlePage.getGoogleResult()) {
             System.out.println(each);
         }
+        System.out.println("****************************");
     }
 
 
     @Then("user checks that at least one attribute of each item from parsed search results contains {string} at Google")
     public void userChecksThatAtLeastOneAttributeOfEachItemFromParsedSearchResultsContainsAtGoogle(String keyword) {
         BrowserUtils.waitFor(5);
+        System.out.println("Search result whose attribute contains "+ keyword+" or NOT");
         for (WebElement webElement : googlePage.googleSearchLinkList) {
             System.out.println(webElement.getAttribute(GooglePage.attributeName));
             if(BrowserUtils.checkAttributeValueContainsKeyword(webElement, GooglePage.attributeName,keyword.toLowerCase())){
@@ -69,6 +73,7 @@ public class Compare_StepDefinitions {
                 System.out.println("false");
             }
         }
+        System.out.println("******************************");
     }
 
     @Then("user logs in search results whose attributes contain {string} and whose do not at Google.")
@@ -84,7 +89,9 @@ public class Compare_StepDefinitions {
                 googleSearchResultLog.put(webElement.getAttribute(GooglePage.attributeName),false);
             }
         }
+        System.out.println("Log result whose attribute contains "+ keyword+" or NOT");
         System.out.println(googleSearchResultLog);
+        System.out.println("**********************************");
 
     }
 
@@ -104,17 +111,20 @@ public class Compare_StepDefinitions {
 
     @And("user parses the first {int} search result items at Bing")
     public void userParsesTheFirstSearchResultItemsAtBing(int searchResultNumber) {
+        System.out.println("*** Search result at Bing ***");
+        System.out.println("-------------------------------");
         BrowserUtils.waitFor(5);
         bingPage.setBingResult(BrowserUtils.getTextOfElementsIntoArrayList(bingPage.bingSearchList));
         for (String each : bingPage.getBingResult()) {
             System.out.println(each);
         }
+        System.out.println("****************************");
     }
 
     @Then("user checks that at least one attribute of each item from parsed search results contains {string} at Bing")
     public void userChecksThatAtLeastOneAttributeOfEachItemFromParsedSearchResultsContainsAtBing(String keyword) {
         BrowserUtils.waitFor(5);
-
+        System.out.println("Search result whose attribute contains "+ keyword+" or NOT");
         for (WebElement webElement : bingPage.bingSearchLinkList) {
             System.out.println(webElement.getAttribute(BingPage.attributeName));
             if (BrowserUtils.checkAttributeValueContainsKeyword(webElement, BingPage.attributeName, keyword.toLowerCase())) {
@@ -123,6 +133,7 @@ public class Compare_StepDefinitions {
                 System.out.println("false");
             }
         }
+        System.out.println("********************************");
     }
 
     @Then("user logs in search results whose attributes contain {string} and whose do not at Bing")
@@ -137,7 +148,9 @@ public class Compare_StepDefinitions {
                 bingSearchResultLog.put(webElement.getAttribute(BingPage.attributeName), false);
             }
         }
+        System.out.println("Log result whose attribute contains "+ keyword+" or NOT");
         System.out.println(bingSearchResultLog);
+        System.out.println("**********************************");
 
     }
 
@@ -155,7 +168,13 @@ public class Compare_StepDefinitions {
             }
 
         }
-        System.out.println(mostPopular);
+        if(mostPopular.isEmpty()){
+            System.out.println("There is NO popular search result");
+        }else{
+            System.out.println("Most Popular Search Result List");
+            System.out.println(mostPopular);
+        }
+        System.out.println("**********************************");
     }
 
 }

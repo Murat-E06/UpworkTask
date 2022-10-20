@@ -17,5 +17,5 @@ Feature: Compare google and bing search result
     Then User compares results and lists most popular items
 
     Examples:
-      | browser | keyword |
-      | firefox | cucumber   |
+      | browser | keyword  |
+      | chrome  | cucumber |
